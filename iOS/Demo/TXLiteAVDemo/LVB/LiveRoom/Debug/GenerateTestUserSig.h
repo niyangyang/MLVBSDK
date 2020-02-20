@@ -23,14 +23,16 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  * 腾讯云 SDKAppId，需要替换为您自己账号下的 SDKAppId。
  *
- * 进入腾讯云云通信[控制台](https://console.cloud.tencent.com/avc ) 创建应用，即可看到 SDKAppId，
+ * 进入云直播控制台的【直播SDK】>【应用管理】页面
+ * https://console.cloud.tencent.com/live/license/appmanage
+ * 单击【创建应用】填写应用信息。完成创建后，您将会在应用列表中看到您创建的应用，记录其 SDKAppID 信息
  * 它是腾讯云用于区分客户的唯一标识。
  */
-static const int _SDKAppID = 0;
+static const int _SDKAppID = <#SDKAPPID#>;
 
 /**
  *  签名过期时间，建议不要设置的过短
- *Ø
+ *
  *  时间单位：秒
  *  默认时间：7 x 24 x 60 x 60 = 604800 = 7 天
  */
@@ -39,14 +41,12 @@ static const int _EXPIRETIME = 604800;
 /**
  * 计算签名用的加密密钥，获取步骤如下：
  *
- * step1. 进入腾讯云云通信[控制台](https://console.cloud.tencent.com/avc ) ，如果还没有应用就创建一个，
- * step2. 单击“应用配置”进入基础配置页面，并进一步找到“帐号体系集成”部分。
- * step3. 点击“查看密钥”按钮，就可以看到计算 UserSig 使用的加密的密钥了，请将其拷贝并复制到如下的变量中
+ * 进入云直播控制台的【直播SDK】>【应用管理】页面，
+ * https://console.cloud.tencent.com/live/license/appmanage
  *
- * 注意：该方案仅适用于调试Demo，正式上线前请将 UserSig 计算代码和密钥迁移到您的后台服务器上，以避免加密密钥泄露导致的流量盗用。
- * 文档：https://cloud.tencent.com/document/product/269/32688#Server
+ * 点击应用的右侧的【管理】链接，单击进入“应用管理”页卡，并单击【显示密钥】，即可获取加密密钥
  */
-static NSString * const _SECRETKEY = @"";
+static NSString * const _SECRETKEY = <#@""#>;
 
 
 @interface GenerateTestUserSig : NSObject

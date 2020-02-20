@@ -15,7 +15,7 @@
 #import "LiveRoomTableViewCell.h"
 #import "LiveRoomNewViewController.h"
 #import "AppDelegate.h"
-#import "../Debug/GenerateTestUserSig.h"
+#import "GenerateTestUserSig.h"
 
 @interface LiveRoomListViewController () <UITableViewDelegate, UITableViewDataSource, MLVBLiveRoomDelegate> {
     NSArray<MLVBRoomInfo *>  	 *_roomInfoArray;
@@ -73,9 +73,10 @@
 - (void)login {
     __block NSString * userID = [[NSUserDefaults standardUserDefaults] objectForKey: @"userID"];
     if (userID == nil || userID.length == 0) {
-        char data[32];
-        for ( int x = 0; x < 32; data[x++] = (char)('a'+ (arc4random_uniform(26))));
-        userID = [[NSString alloc] initWithBytes:data length:32 encoding:NSUTF8StringEncoding];
+        const int nameLength = 16;
+        char data[nameLength];
+        for ( int x = 0; x < nameLength; data[x++] = (char)('a'+ (arc4random_uniform(26))));
+        userID = [[NSString alloc] initWithBytes:data length:nameLength encoding:NSUTF8StringEncoding];
         [[NSUserDefaults standardUserDefaults] setObject:userID forKey:@"userID"];
     }
     
@@ -89,7 +90,8 @@
     loginInfo.userName = _userName;
     loginInfo.userAvatar = @"headpic.png";
     loginInfo.userSig = userSig;
-    
+    _createBtn.enabled = NO;
+
     __weak __typeof(self) weakSelf = self;
     
     // 初始化LiveRoom

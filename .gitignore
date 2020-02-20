@@ -1,14 +1,15 @@
 Android/XiaoZhiBo/.idea
 Android/XiaoZhiBo/.gradle
 Android/XiaoZhiBo/app/build/
+Android/XiaoZhiBo/beauty/build/
 
 .gradle
 .idea
 Android/Demo/.gradle
 Android/Demo/.idea
 Android/Demo/app/build
-Android/Demo/lib_tccommon/build
-
+Android/Demo/lvb/build
+Android/Demo/beauty/build/
 
 .DS_Store
 .vscode
